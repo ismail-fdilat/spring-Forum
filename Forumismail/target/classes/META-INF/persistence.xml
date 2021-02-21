@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="Forum"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<mapping-file>META-INF/queries.xml</mapping-file>
+		<class>com.formation.msglc.entities.Auteur</class>
+		<class>com.formation.msglc.entities.Categorie</class>
+		<class>com.formation.msglc.entities.Reponse</class>
+		<class>com.formation.msglc.entities.SousCategorie</class>
+		<class>com.formation.msglc.entities.Sujet</class>
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="generateDdl" value="true" />
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQL5Dialect" />
+		</properties>
+
+	</persistence-unit>
+</persistence>

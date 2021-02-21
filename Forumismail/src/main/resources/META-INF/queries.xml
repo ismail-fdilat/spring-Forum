@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm 
+	http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+
+
+	<named-query name="Auteur.getAll">
+		<query>SELECT a FROM Auteur a</query>
+	</named-query>
+	
+	<named-query name="Auteur.testeLogin">
+		<query>SELECT a FROM Auteur a WHERE a.email= ?1</query>
+	</named-query>
+	
+
+	<named-query name="Auteur.getAuteurByRole">
+		<query>SELECT a FROM Auteur a WHERE a.role = ?1</query>
+	</named-query>
+	
+	<named-query name="Sujet.getSujetBySousCategorie">
+		<query>SELECT s FROM Sujet s WHERE s.valide = true AND s.sousCategorie.id = ?1</query>
+	</named-query>
+	
+	<named-query name="Sujet.getSujetByAuteur">
+		<query>SELECT s FROM Sujet s WHERE s.valide = true AND s.auteur.id = ?1</query>
+	</named-query>
+	
+	<named-query name="Sujet.getSujetsToValidate">
+		<query>SELECT s FROM Sujet s WHERE s.valide = false</query>
+	</named-query>
+	
+	<named-query name="Reponse.getReponseBySujet">
+		<query>SELECT r FROM Reponse r WHERE r.valide = true AND r.sujet.id = ?1</query>
+	</named-query>
+	
+	<named-query name="Reponse.getReponsesToValidate">
+		<query>SELECT r FROM Reponse r WHERE r.valide = false</query>
+	</named-query>
+	
+	<named-query name="Reponse.getReponseByAuteur">
+		<query>SELECT r FROM Reponse r WHERE r.valide = true AND r.auteur.id = ?1</query>
+	</named-query>
+	
+	<named-native-query name="Categorie.getAll"
+		result-class="com.formation.msglc.entities.Categorie">
+		<query>SELECT * FROM Categorie WHERE valide IS TRUE</query>
+	</named-native-query>
+	
+	<named-native-query name="Categorie.getCategoriesMC"
+		result-class="com.formation.msglc.entities.Categorie">
+		<query>SELECT * FROM Categorie WHERE valide IS TRUE AND description LIKE ?1</query>
+	</named-native-query>
+	
+	<named-native-query name="Categorie.getCategoriesToValidate"
+		result-class="com.formation.msglc.entities.Categorie">
+		<query>SELECT * FROM Categorie WHERE valide IS FALSE</query>
+	</named-native-query>
+	
+	<named-native-query name="SousCategorie.getAll"
+		result-class="com.formation.msglc.entities.SousCategorie">
+		<query>SELECT * FROM SousCategorie WHERE valide IS TRUE</query>
+	</named-native-query>
+	
+	<named-native-query name="SousCategorie.getSousCategoriesMC"
+		result-class="com.formation.msglc.entities.SousCategorie">
+		<query>SELECT * FROM SousCategorie WHERE valide IS TRUE AND description LIKE ?1</query>
+	</named-native-query>
+	
+	<named-native-query name="SousCategorie.getSousCategoriesToValidate"
+		result-class="com.formation.msglc.entities.SousCategorie">
+		<query>SELECT * FROM SousCategorie WHERE valide IS FALSE</query>
+	</named-native-query>
+	
+	<named-native-query name="SousCategorie.getSousCategoriesByCategorie"
+		result-class="com.formation.msglc.entities.SousCategorie">
+		<query>SELECT * FROM SousCategorie WHERE valide IS TRUE AND idCategorie = :id</query>
+	</named-native-query>
+
+</entity-mappings>

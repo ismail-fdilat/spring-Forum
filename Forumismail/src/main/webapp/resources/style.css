@@ -1,0 +1,116 @@
+@CHARSET "ISO-8859-1";
+
+.tableStyleB
+{
+	text-align: center;
+	width: 500px;
+	border: 1px solid;
+}
+
+.refresh
+{	
+	background:url(images/refresh.png) top right no-repeat;
+	width: 32px;
+	height: 32px;
+	border: 0;
+	cursor: pointer;
+}
+
+.send
+{	
+	background:url(images/message.png) top right no-repeat;
+	width: 32px;
+	height: 32px;
+	border:0;
+	cursor: pointer;
+}
+
+.tdB
+{
+	height: 30px;
+	border: 1px solid;
+}
+
+.center
+{
+	margin: auto;
+}
+
+.message
+{
+	width: 90%;
+	background-color: lime;
+}
+
+.login
+{
+	width: 10%;
+	background-color: aqua;
+}
+
+.erreur
+{
+	color:red;
+	font-weight: bold;
+	margin-left: 30px;
+}
+
+.errorCross
+{
+	background-image: url('images/cross.png');
+	width: 29px;
+	height: 29px;
+}
+.form {
+  /* Uniquement centrer le formulaire sur la page */
+  margin: 0 auto;
+  width: 550px;
+  /* Encadré pour voir les limites du formulaire */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+
+td
+{
+	height: 30px;
+}
+.border
+{
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+.div {
+  margin: 0 auto;
+  width: 750px;
+  /* Encadré pour voir les limites du formulaire */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+.divProfil {
+  margin: 0 auto;
+  width: 130px;
+  /* Encadré pour voir les limites du formulaire */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+.divContenu {
+  margin: 0 auto;
+  width: 550px;
+  /* Encadré pour voir les limites du formulaire */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+fieldset
+{
+	 /* Uniquement centrer le formulaire sur la page */
+  margin: 0 auto;
+  width: 400px;
+  /* Encadré pour voir les limites du formulaire */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}

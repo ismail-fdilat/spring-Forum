@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+  
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/forum?serverTimezone=UTC"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	
+	<bean id="persistenceUnitManager"
+	class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+	<property name="persistenceXmlLocations">
+		<list>
+			<value>classpath*:META-INF/persistence.xml</value>
+		</list>
+	</property>
+	<property name="defaultDataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="entityManagerFactory" 
+	class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<property name="persistenceUnitManager" ref="persistenceUnitManager"></property>
+	<property name="persistenceUnitName" value="Forum"></property>
+	
+	</bean>
+	
+	<bean id="transactionManager"
+	class="org.springframework.orm.jpa.JpaTransactionManager">
+	<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	</bean>
+	
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"></bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+	
+	<bean id="dao" class="com.formation.msglc.dao.ForumDaoImpl"></bean>
+	<bean id="metier" class="com.formation.msglc.metier.ForumMetierImpl">
+		<property name="dao" ref="dao"></property>
+	</bean>
+</beans>
